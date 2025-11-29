@@ -1,143 +1,16 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTRYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Новогодний кроссворд</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #e8f5e9;
-      text-align: center;
-      padding: 20px;
-    }
-    h1 {
-      color: #1b5e20;
-    }
-    .crossword {
-      display: inline-block;
-      margin: 20px;
-      border-collapse: collapse;
-    }
-    .crossword td {
-      width: 45px;
-      height: 45px;
-      border: 2px solid #000;
-      text-align: center;
-      vertical-align: middle;
-      background: white;
-    }
-    .black {
-      background: #000;
-    }
-    input {
-      width: 100%;
-      height: 100%;
-      border: none;
-      text-align: center;
-      font-size: 20px;
-      font-weight: bold;
-      text-transform: uppercase;
-      box-sizing: border-box;
-    }
-    .clues {
-      max-width: 500px;
-      margin: 20px auto;
-      text-align: left;
-      padding: 15px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .clue {
-      margin: 10px 0;
-    }
-    button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: #2e7d32;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    button:hover {
-      background: #1b5e20;
-    }
-  </style>
+   <title>Моя презентация</title>
 </head>
-<body>
-  <h1>🎄 Новогодний кроссворд (2 слова)</h1>
-  
-  <table class="crossword">
-    <tr>
-      <td><input maxlength="1" data-row="0" data-col="0"></td>
-      <td><input maxlength="1" data-row="0" data-col="1"></td>
-      <td><input maxlength="1" data-row="0" data-col="2"></td>
-      <td><input maxlength="1" data-row="0" data-col="3"></td>
-    </tr>
-    <tr>
-      <td><input maxlength="1" data-row="1" data-col="0"></td>
-      <td class="black"></td>
-      <td class="black"></td>
-      <td class="black"></td>
-    </tr>
-    <tr>
-      <td><input maxlength="1" data-row="2" data-col="0"></td>
-      <td class="black"></td>
-      <td class="black"></td>
-      <td class="black"></td>
-    </tr>
-    <tr>
-      <td><input maxlength="1" data-row="3" data-col="0"></td>
-      <td class="black"></td>
-      <td class="black"></td>
-      <td class="black"></td>
-    </tr>
-  </table>
+<boby>
 
-  <div class="clues">
-    <h3>По горизонтали:</h3>
-    <div class="clue">1. Транспорт Деда Мороза (4 буквы)</div>
+   <p>
+      Нажмите, чтобы скачать или открыть презинтация:
+      <a hlef="СетьВводных.pptx">Презинтация в формате .pptx<a>
+      Нажмите, чтобы скачать или открыть index.html:
+      <a href="index.html">Файл проверки работы с кириллицей .html</a>
+      </p>
 
-    <h3>По вертикали:</h3>
-    <div class="clue">1. Белый покров зимой (4 буквы)</div>
-  </div>
-
-  <button onclick="check()">Проверить</button>
-
-  <script>
-    const solution = {
-      "0,0": "С",
-      "0,1": "А",
-      "0,2": "Н",
-      "0,3": "И",
-      "1,0": "Н",
-      "2,0": "Е",
-      "3,0": "Г"
-    };
-
-    function check() {
-      let correct = true;
-      for (let key in solution) {
-        const [row, col] = key.split(',');
-        const input = document.querySelector(`input[data-row="${row}"][data-col="${col}"]`);
-        const user = (input.value || '').trim().toUpperCase();
-        const sol = solution[key];
-        if (user === sol) {
-          input.style.backgroundColor = '#c8e6c9';
-        } else {
-          input.style.backgroundColor = '#ffcdd2';
-          correct = false;
-        }
-      }
-
-      if (correct) {
-        alert('Правильно! 🎉 Сани и снег — отличное новогоднее сочетание!');
-      } else {
-        alert('Есть ошибки. Попробуйте ещё!');
-      }
-    }
-  </script>
-</body>
-</html>
+      </body>
+      </html>
