@@ -2,16 +2,16 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Русский новогодний кроссворд</title>
+  <title>Новогодний кроссворд</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #e3f2fd;
+      background: #e8f5e9;
       text-align: center;
       padding: 20px;
     }
     h1 {
-      color: #c62828;
+      color: #1b5e20;
     }
     .crossword {
       display: inline-block;
@@ -19,13 +19,11 @@
       border-collapse: collapse;
     }
     .crossword td {
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
       border: 2px solid #000;
       text-align: center;
       vertical-align: middle;
-      font-size: 18px;
-      font-weight: bold;
       background: white;
     }
     .black {
@@ -36,9 +34,10 @@
       height: 100%;
       border: none;
       text-align: center;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: bold;
       text-transform: uppercase;
+      box-sizing: border-box;
     }
     .clues {
       max-width: 500px;
@@ -50,143 +49,91 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     .clue {
-      margin: 8px 0;
+      margin: 10px 0;
     }
     button {
       margin-top: 15px;
-      padding: 8px 16px;
-      background: #4caf50;
+      padding: 10px 20px;
+      background: #2e7d32;
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 5px;
       cursor: pointer;
+      font-size: 16px;
     }
     button:hover {
-      background: #388e3c;
+      background: #1b5e20;
     }
   </style>
 </head>
 <body>
-  <h1>🎄 Новогодний кроссворд (5 слов)</h1>
-
-  <!-- Сетка 7x7 -->
-  <table class="crossword" id="grid">
+  <h1>🎄 Новогодний кроссворд (2 слова)</h1>
+  
+  <table class="crossword">
     <tr>
-      <td><input maxlength="1"></td>
-      <td><input maxlength="1"></td>
-      <td><input maxlength="1"></td>
-      <td class="black"></td>
-      <td><input maxlength="1"></td>
-      <td><input maxlength="1"></td>
-      <td><input maxlength="1"></td>
+      <td><input maxlength="1" data-row="0" data-col="0"></td>
+      <td><input maxlength="1" data-row="0" data-col="1"></td>
+      <td><input maxlength="1" data-row="0" data-col="2"></td>
+      <td><input maxlength="1" data-row="0" data-col="3"></td>
     </tr>
     <tr>
-      <td class="black"></td>
-      <td class="black"></td>
-      <td><input maxlength="1"></td>
+      <td><input maxlength="1" data-row="1" data-col="0"></td>
       <td class="black"></td>
       <td class="black"></td>
       <td class="black"></td>
-      <td><input maxlength="1"></td>
     </tr>
     <tr>
-      <td><input maxlength="1"></td>
-      <td><input maxlength="1"></td>
-      <td><input maxlength="1"></td>
-      <td><input maxlength="1"></td>
-      <td><input maxlength="1"></td>
-      <td><input maxlength="1"></td>
-      <td><input maxlength="1"></td>
+      <td><input maxlength="1" data-row="2" data-col="0"></td>
+      <td class="black"></td>
+      <td class="black"></td>
+      <td class="black"></td>
     </tr>
     <tr>
-      <td class="black"></td>
-      <td class="black"></td>
-      <td><input maxlength="1"></td>
-      <td class="black"></td>
-      <td class="black"></td>
-      <td class="black"></td>
-      <td><input maxlength="1"></td>
-    </tr>
-    <tr>
-      <td><input maxlength="1"></td>
-      <td><input maxlength="1"></td>
-      <td><input maxlength="1"></td>
-      <td class="black"></td>
-      <td><input maxlength="1"></td>
-      <td><input maxlength="1"></td>
-      <td><input maxlength="1"></td>
-    </tr>
-    <tr>
+      <td><input maxlength="1" data-row="3" data-col="0"></td>
       <td class="black"></td>
       <td class="black"></td>
       <td class="black"></td>
-      <td class="black"></td>
-      <td class="black"></td>
-      <td class="black"></td>
-      <td><input maxlength="1"></td>
-    </tr>
-    <tr>
-      <td class="black"></td>
-      <td class="black"></td>
-      <td class="black"></td>
-      <td class="black"></td>
-      <td class="black"></td>
-      <td class="black"></td>
-      <td><input maxlength="1"></td>
     </tr>
   </table>
 
   <div class="clues">
     <h3>По горизонтали:</h3>
-    <div class="clue">1. Главный новогодний символ в доме (4 буквы)</div>
-    <div class="clue">3. Съедобное украшение из теста (6 букв)</div>
-    <div class="clue">5. Зимнее украшение на окнах (5 букв)</div>
+    <div class="clue">1. Транспорт Деда Мороза (4 буквы)</div>
 
     <h3>По вертикали:</h3>
-    <div class="clue">1. Новогодний дедушка (3 буквы)</div>
-    <div class="clue">2. То, что висит на ёлке и блестит (4 буквы)</div>
+    <div class="clue">1. Белый покров зимой (4 буквы)</div>
   </div>
 
-  <button onclick="checkAnswers()">Проверить</button>
+  <button onclick="check()">Проверить</button>
 
   <script>
-    // Правильные ответы (все заглавными)
-    const solution = [
-      ['Ё', 'Л', 'К', 'А', 'Ш', 'А', 'Р'],
-      ['', '', 'Р', '', '', '', 'Ы'],
-      ['Д', 'Е', 'Д', 'М', 'О', 'Р', 'О'],
-      ['', '', 'М', '', '', '', 'З'],
-      ['У', 'З', 'О', 'Р', ' ', ' ', ' '], // последние две ячейки не используются
-      ['', '', '', '', '', '', ' '],
-      ['', '', '', '', '', '', ' ']
-    ];
+    const solution = {
+      "0,0": "С",
+      "0,1": "А",
+      "0,2": "Н",
+      "0,3": "И",
+      "1,0": "Н",
+      "2,0": "Е",
+      "3,0": "Г"
+    };
 
-    function checkAnswers() {
-      const inputs = document.querySelectorAll('input');
-      let index = 0;
-      let allCorrect = true;
-
-      // Проходим по сетке 7x7
-      for (let row = 0; row < 7; row++) {
-        for (let col = 0; col < 7; col++) {
-          const cell = document.querySelector(`#grid tr:nth-child(${row + 1}) td:nth-child(${col + 1})`);
-          if (!cell.classList.contains('black')) {
-            const input = cell.querySelector('input');
-            const userVal = (input.value || '').trim().toUpperCase();
-            const correctVal = solution[row][col] || '';
-            
-            if (userVal === correctVal) {
-              input.style.backgroundColor = '#d4edda';
-            } else {
-              input.style.backgroundColor = '#f8d7da';
-              allCorrect = false;
-            }
-          }
+    function check() {
+      let correct = true;
+      for (let key in solution) {
+        const [row, col] = key.split(',');
+        const input = document.querySelector(`input[data-row="${row}"][data-col="${col}"]`);
+        const user = (input.value || '').trim().toUpperCase();
+        const sol = solution[key];
+        if (user === sol) {
+          input.style.backgroundColor = '#c8e6c9';
+        } else {
+          input.style.backgroundColor = '#ffcdd2';
+          correct = false;
         }
       }
 
-      if (allCorrect) {
-        alert('Поздравляем! Кроссворд решён! 🎉');
+      if (correct) {
+        alert('Правильно! 🎉 Сани и снег — отличное новогоднее сочетание!');
       } else {
         alert('Есть ошибки. Попробуйте ещё!');
       }
